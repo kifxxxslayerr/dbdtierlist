@@ -1,0 +1,717 @@
+/* Общие настройки и сброс стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e2e8f0;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    /* Спокойный, глубокий темно-синий/угольный цвет */
+    background-color: #0b0f19; 
+    
+    /* Очень мягкое, рассеянное серо-голубое свечение в центре и углах */
+    background-image: 
+        radial-gradient(circle at 50% 15%, #1e293b 0%, transparent 65%),
+        radial-gradient(circle at 10% 80%, #0f172a 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, #111827 0%, transparent 50%);
+    background-size: 200% 200%;
+    
+    /* Медленная, убаюкивающая анимация (20 секунд), чтобы глаза отдыхали */
+    animation: smoothGlow 20s ease-in-out infinite alternate;
+}
+
+/* Плавный перелив заднего фона без мерцания */
+@keyframes smoothGlow {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 50% 100%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+/* Кнопка сброса тир-листа */
+.reset-btn {
+    background: #1e293b; /* Спокойный темно-серый цвет */
+    color: #94a3b8; /* Приглушенный текст */
+    border: 1px solid #334155;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    display: block;
+    margin: 25px auto 0 auto;
+}
+
+.reset-btn:hover {
+    background-color: #334155; /* Мягкое подсвечивание при наведении */
+    color: #f1f5f9;
+    border-color: #475569;
+}
+
+/* Анимации для плавного вращения и перелива голубых неоновых волн */
+@keyframes bgMovement {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes bgMovementInverse {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    
+    /* ВОТ ЭТО ДОБАВЛЯЕМ: Мягчайший рассеянный свет вокруг контента */
+    filter: drop-shadow(0 20px 50px rgba(14, 165, 233, 0.05));
+}
+
+/* Навесим глубокие тени на сами блоки с профилями и таблицу */
+.tierlist-section, .tier-table, [class*="card"], [class*="profile"] {
+    background-color: #0f172a !important; /* Делаем плашки чуть светлее фона */
+    border: 1px solid #1e293b !important; /* Строгая тонкая рамка */
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 
+                0 0 20px 0 rgba(14, 165, 233, 0.03); /* Едва заметный голубой ореол */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- ШАПКА (HEADER) --- */
+header {
+    background-color: #14171c;
+    border-bottom: 2px solid #1f2633;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #0088ff; /* Синий акцент */
+    text-shadow: 0 0 10px rgba(0, 136, 255, 0.6);
+}
+
+nav a {
+    color: #94a3b8;
+    text-decoration: none;
+    margin-right: 25px;
+    transition: color 0.3s;
+}
+
+nav a:hover, nav a.active {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.btn-login {
+    background: transparent;
+    border: 1px solid #0088ff;
+    color: #0088ff;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    background: #0088ff;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0, 136, 255, 0.5);
+}
+
+/* --- ЗАГОЛОВКИ БЛОКОВ --- */
+h2 {
+    margin: 40px 0 20px 0;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-left: 4px solid #0088ff;
+    padding-left: 10px;
+}
+
+/* --- ЛИДЕРБОРД / ТОП --- */
+.leaderboard-table {
+    background-color: #14171c;
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #1f2633;
+}
+
+.leaderboard-table {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Расстояние между строчками топа */
+    width: 100%;
+}
+
+.leaderboard-row {
+    display: flex !important;
+    justify-content: space-between !important; /* Раскидывает ник влево, а секунды вправо */
+    align-items: center !important;
+    padding: 14px 20px !important;
+    background-color: #101724;
+    border-radius: 6px;
+    border: 1px solid #161f2e;
+    font-weight: 600;
+    width: 100%;
+    box-sizing: border-box; /* Чтобы паддинги не ломали ширину */
+    transition: all 0.2s ease;
+}
+
+/* Эффект наведения на строчку в топе */
+.leaderboard-row:hover {
+    background-color: #161f30;
+    border-color: #38bdf8;
+    transform: scale(1.005);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+}
+
+/* Выделение топ-1 игрока (призрачного игрока) */
+.place-1 {
+    border-left: 4px solid #ef4444 !important;
+    background: linear-gradient(90deg, #181524 0%, #101724 100%) !important;
+    animation: pulseGlow 2s infinite alternate;
+}
+
+/* Выделение топ-2 */
+.place-2 {
+    border-left: 4px solid #f97316 !important;
+}
+
+/* Выделение топ-3 */
+.place-3 {
+    border-left: 4px solid #eab308 !important;
+}
+
+/* Анимация пульсации для лидера */
+@keyframes pulseGlow {
+    0% { box-shadow: inset 0 0 10px rgba(239, 68, 68, 0.05); border-color: #ef4444; }
+    100% { box-shadow: inset 0 0 20px rgba(239, 68, 68, 0.2), 0 0 15px rgba(239, 68, 68, 0.1); border-color: #ff6b6b; }
+}
+/* Выделение призовых мест цветом */
+.place-1 { border-color: #ffd700; } /* Золото */
+.place-2 { border-color: #c0c0c0; } /* Серебро */
+.place-3 { border-color: #cd7f32; } /* Бронза */
+
+/* --- КАРТОЧКИ ПРОФИЛЕЙ --- */
+/* --- КАРТОЧКИ ПРОФИЛЕЙ --- */
+.profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; /* Увеличили расстояние, чтобы аватаркам было свободно */
+    margin-bottom: 50px;
+}
+
+.player-card {
+    background-color: #0c1017;
+    border-radius: 12px;
+    overflow: visible;
+    border: 1px solid #161f2e;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Плавный игровой отскок */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Полная прокачка ховера карточки */
+.player-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    /* Фиолетово-синее неоновое свечение */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(168, 85, 247, 0.2);
+    border-color: #a855f7;
+}
+
+/* Оживим аватарку при наведении на карточку */
+.player-card:hover .player-avatar {
+    border-color: #a855f7;
+    transform: scale(1.08) rotate(3deg);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+}
+
+.player-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #0c1017;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    background-color: #101724;
+    transition: all 0.3s ease; /* Чтобы аватарка крутилась и увеличивалась плавно */
+}
+
+.card-hero {
+    height: 100px; /* Сделали фон повыше */
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+    border-bottom: 1px solid #161f2e;
+    position: relative;
+}
+
+/* Контейнер для позиционирования аватарки */
+.avatar-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: -40px auto 0 auto; /* Сдвигаем наверх ровно на половину высоты */
+    z-index: 2;
+}
+
+.player-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #0c1017; /* Темная рамка вокруг авы */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    background-color: #101724;
+}
+
+.card-body {
+    padding: 15px 20px 25px 20px;
+    text-align: center; /* Центруем ники и стату */
+}
+
+.card-body h3 {
+    margin-bottom: 18px;
+    font-size: 20px;
+    color: #f1f5f9;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.player-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #101724; /* Сделали подложку под стату полегче */
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #161f2e;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.stat-item .label {
+    color: #64748b;
+}
+
+.stat-item .value {
+    font-weight: 700;
+    color: #cbd5e1;
+}
+/* --- СТИЛИ ДЛЯ ТИР-ЛИСТА --- */
+
+/* Класс для скрытия страниц */
+.hidden {
+    display: none !important;
+}
+
+.tier-table {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: #0c1017;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #161f2e;
+    margin-bottom: 30px;
+}
+
+.tier-row {
+    display: flex;
+    background-color: #101724;
+    min-height: 90px; /* Немного увеличили высоту для длинных названий */
+    border-radius: 4px;
+    overflow: hidden;
+    border-bottom: 1px solid #161f2e;
+}
+
+/* Левые плашки с названиями тиров */
+.tier-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 180px; 
+    min-width: 180px;
+    font-size: 13px; 
+    font-weight: 800;
+    color: #000;
+    text-transform: uppercase;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Цвета твоих кастомных плашек */
+.god-tier { background-color: #a855f7; } /* Фиолетовый */
+.s-tier   { background-color: #ef4444; } /* Красный */
+.a-tier   { background-color: #f97316; } /* Оранжевый */
+.b-tier   { background-color: #eab308; } /* Желтый */
+.c-tier   { background-color: #22c55e; } /* Зеленый */
+
+/* Зоны, куда мы дропаем ники */
+.tier-zone {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    flex-grow: 1;
+    min-height: 60px;
+    background-color: #0b0f17;
+}
+
+/* Тот самый блок банка, который у тебя сейчас невидим */
+.pool-zone {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    background-color: #101724 !important;
+    border: 2px dashed #1e293b !important;
+    border-radius: 8px;
+    min-height: 100px;
+    margin-top: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Оформление плашки с ником (чтобы она не была голым текстом) */
+.tier-item {
+    display: inline-block;
+    background-color: #1e293b !important; /* Насыщенный серый геймерский фон */
+    color: #f1f5f9 !important;
+    padding: 10px 20px !important;
+    border-radius: 6px !important; /* Сделаем слегка рублеными, как карточки */
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    cursor: grab;
+    border: 1px solid #334155 !important;
+    user-select: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Когда зажимаешь ник мышкой */
+.tier-item:active {
+    cursor: grabbing;
+    background-color: #2563eb !important; /* Ярко-синий при перетаскивании */
+    border-color: #3b82f6 !important;
+}
+
+/* Силуэт плашки в момент переноса */
+.sortable-ghost {
+    opacity: 0.3;
+    background-color: #2563eb !important;
+}
+/* Кнопки выбора режима в тир-листе */
+.tier-modes {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.mode-btn {
+    background-color: #101724;
+    color: #94a3b8;
+    border: 1px solid #1e293b;
+    padding: 12px 24px;
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+.mode-btn:hover {
+    border-color: #a855f7;
+    color: #f1f5f9;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+}
+
+/* Стиль для выбранного сейчас режима */
+.mode-btn.active {
+    background-color: #a855f7 !important;
+    color: #000 !important;
+    border-color: #a855f7 !important;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+}
+/* Контейнер для банка (зоны выдачи) */
+#tier-pool {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 100px !important; /* Даем жесткую высоту, чтобы блок не схлопывался */
+    background-color: #0f172a;
+    border: 2px dashed #334155;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 15px;
+    box-sizing: border-box;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+/* Изменение рамки при наведении или जब подтаскиваешь плашку обратно */
+#tier-pool:hover {
+    border-color: #a855f7;
+    background-color: #141b2d;
+}
+
+/* Стили для самой плашки с ником внутри тира или банка */
+.tier-item {
+    background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%) !important;
+    color: #f1f5f9 !important;
+    padding: 12px 25px !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    border-radius: 6px !important;
+    cursor: grab !important;
+    border: 1px solid #a855f7 !important;
+    box-shadow: 0 4px 10px rgba(168, 85, 247, 0.2) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    user-select: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.tier-item:active {
+    cursor: grabbing !important;
+}
+/* Эффект при наведении на элементы */
+.tier-row:hover, [class*="card"]:hover, .tier-item:hover {
+    transform: translateY(-2px); /* Карточка слегка приподнимается */
+    box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.8), 
+                0 0 25px 2px rgba(56, 189, 248, 0.08) !important; /* Свечение чуть-чуть усиливается */
+}
+/* Прячем модалку авторизации */
+.modal.hidden {
+    display: none !important;
+}
+/* Настраиваем цвета для плашек новых тиров */
+.god-tier {
+    background: #3f1515 !important; /* Темно-бордовый для Богов */
+    color: #ff8888 !important;
+}
+
+/* Для нижних тиров делаем строгие серые матовые оттенки */
+#tier-d ~ .tier-label, 
+.tier-row:nth-child(6) .tier-label {
+    background: #2a2a2a !important; 
+    color: #aaaaaa !important;
+}
+
+.tier-row:nth-child(7) .tier-label {
+    background: #1a1a1a !important;
+    color: #777777 !important;
+}
+
+/* Гарантируем, что новые зоны ведут себя как надо */
+#tier-god, #tier-d, #tier-f {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    min-height: 60px;
+    background: #0d0d0d !important;
+}
+/* Выравниваем фон всех строк тир-листа */
+.tier-row {
+    background: #0d0d0d !important; /* Тот самый матовый почти черный */
+    border-bottom: 1px solid #1a1a1a !important;
+}
+
+/* Делаем так, чтобы зоны внутри новых строк выглядели как старые */
+#tier-god, #tier-d, #tier-f {
+    background: transparent !important; /* Убираем темную подложку */
+    min-height: 70px !important; /* Даем простор для перетаскивания */
+    width: 100%;
+}
+/* Выравниваем абсолютно все зоны внутри строк */
+.tier-zone, 
+#tier-god, 
+#tier-d, 
+#tier-f {
+    background: #0d0d0d !important; /* Единый матовый фон для всех */
+    min-height: 70px !important;
+}
+
+.tier-row {
+    background: #0d0d0d !important;
+    border: 1px solid #1a1a1a !important;
+}
+/* Выравниваем байт-кнопку внутри флекс-меню */
+nav {
+    display: flex;
+    align-items: center; /* Центрируем всё по вертикали */
+    gap: 15px; /* Задаем одинаковые отступы между элементами */
+}
+
+/* Бешеная неоновая кнопка-приманка */
+.zox-header-bait {
+    background: linear-gradient(45deg, #ff0055, #ffcc00) !important;
+    color: #000000 !important;
+    font-weight: 900 !important;
+    font-size: 11px !important; /* Чуть уменьшил, чтобы влезло идеально */
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border: 2px solid #ffffff !important;
+    text-decoration: none !important;
+    cursor: pointer;
+    border-radius: 4px;
+    white-space: nowrap; /* Чтобы текст не переносился на вторую строку */
+    
+    /* Анимация жесткого свечения и тряски */
+    animation: zoxGlow 1s infinite alternate, zoxShake 0.4s infinite;
+    transition: transform 0.1s ease;
+}
+
+.zox-header-bait:hover {
+    transform: scale(1.08) rotate(2deg) !important;
+    box-shadow: 0 0 30px #ffcc00 !important;
+}
+
+/* Эффекты взрыва глаз */
+@keyframes zoxGlow {
+    0% { box-shadow: 0 0 8px #ff0055 !important; }
+    100% { box-shadow: 0 0 20px #ffcc00, 0 0 5px #ff0055 !important; }
+}
+
+@keyframes zoxShake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-0.5px, 0.5px); }
+    50% { transform: translate(0.5px, -0.5px); }
+    75% { transform: translate(-0.5px, -0.5px); }
+    100% { transform: translate(0, 0); }
+}
+/* Новая стильная музыкальная кнопка без вырвиглазных цветов */
+.music-bait-btn {
+    background: #1e293b !important; /* Благородный темно-синий матовый фон */
+    color: #38bdf8 !important; /* Мягкий голубой цвет текста */
+    font-weight: 700 !important;
+    font-size: 11px !important;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border: 1px solid #38bdf8 !important; /* Тонкая аккуратная рамка в цвет текста */
+    text-decoration: none !important;
+    cursor: pointer;
+    border-radius: 4px;
+    white-space: nowrap;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.2) !important; /* Очень легкое, едва заметное свечение */
+    
+    /* Плавная, спокойная пульсация рамки */
+    animation: mildGlow 2s infinite alternate;
+    transition: all 0.2s ease;
+}
+
+/* При наведении кнопка мягко подсвечивается */
+.music-bait-btn:hover {
+    background: #38bdf8 !important; /* Инвертируем цвета при наведении */
+    color: #0f172a !important;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.6) !important;
+    transform: translateY(-1px); /* Легкий аккуратный подъем */
+}
+
+/* Спокойная анимация пульсации */
+@keyframes mildGlow {
+    0% {
+        border-color: rgba(56, 189, 248, 0.4);
+        box-shadow: 0 0 4px rgba(56, 189, 248, 0.1) !important;
+    }
+    100% {
+        border-color: rgba(56, 189, 248, 1);
+        box-shadow: 0 0 12px rgba(56, 189, 248, 0.3) !important;
+    }
+}
+/* Базовые настройки для всех названий тиров */
+.tier-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6px 8px !important;
+    box-sizing: border-box !important;
+    line-height: 1.2 !important;
+    
+    /* Разрешаем перенос строк по словам, чтобы длинный текст не вылетал */
+    white-space: normal !important; 
+    word-break: break-word !important;
+}
+
+/* Персональный фикс для супер-длинной первой плашки (Легенды) */
+.god-tier,
+.tier-label.god-tier {
+    font-size: 11px !important; /* Чуть уменьшаем шрифт, чтобы перенос выглядел аккуратно */
+    font-weight: 800 !important;
+}
+
+/* Персональный фикс для плашки с дефолтиками, чтобы она оставалась монолитной */
+.b-term, 
+.tier-label.b-tier {
+    font-size: 10.5px !important;
+    white-space: nowrap !important; /* Ей перенос не нужен, она теперь влезет */
+    letter-spacing: -0.2px;
+}
+/* Стили для панического таймера */
+#secret-timer-container {
+    background: #110307 !important; /* Глубокий темно-бордовый матовый фон */
+    color: #ef4444 !important; /* Ярко-красный текст */
+    border-bottom: 2px solid #ef4444 !important;
+    text-align: center;
+    padding: 12px;
+    font-weight: 900;
+    font-size: 16px;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.15);
+    animation: pulseTimer 2s infinite alternate;
+}
+
+#timer-display {
+    font-size: 18px;
+    margin-left: 5px;
+    color: #ffffff !important;
+    background: #1e060c;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid #ef4444;
+}
+
+@keyframes pulseTimer {
+    0% { opacity: 0.9; }
+    100% { opacity: 1; box-shadow: 0 4px 25px rgba(239, 68, 68, 0.3); }
+}
