@@ -5,119 +5,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DbD Squad Stats</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Подключаем библиотеку SortableJS для перетаскивания -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 </head>
 <body>
 
-    <!-- Шапка сайта -->
     <header>
-        <div class="logo">DBD <span>MATADORAPORNO322</span></div>
-        <nav>
-            <nav>
-            <a href="#" id="nav-main" class="active">Главная</a>
-            <a href="#" id="nav-tier">Тир-лист</a>
-        <div id="secret-timer-container" style="display: none;">
-    ВАМ ПИЗДЕЦ: <span id="timer-display">10:00</span>
-</div>
+        <a href="#" id="logo-home" class="logo-link">
+            <div class="logo">Я НЕ ЗНАЮ <span>ЧТО ЭТО</span></div>
+        </a>
+        
+        <nav class="center-nav">
+            <a href="#" id="nav-tierlist" class="nav-link">Тир-лист</a>
             
-            <!-- Первая кнопка-байт -->
-            <a href="https://pbs.twimg.com/media/Gw5XlRLWIAAVwnh.png" target="_blank" class="zox-header-bait">
-                ЗОКС ДЛЯ ТЕБЯ ТУТ ПОДАРОЧЕК!!!
+            <a href="https://www.twitch.tv/zzoxxxnx" target="_blank" class="zox-header-bait" id="twitch-button">
+                твич зокса
             </a>
 
-            <!-- НАШ НОВЫЙ МУЗЫКАЛЬНЫЙ ТРЕК -->
-            <a href="https://www.youtube.com/watch?v=QMh2Su9L-3s" target="_blank" class="music-bait-btn">
-                yeyeyeye
+            <a href="https://www.youtube.com/watch?v=Ssj5ZBuhwIo&list=RDSsj5ZBuhwIo&start_radio=1" target="_blank" class="music-bait-btn">
+                dave blunts mindset
             </a>
-
-            <button id="btn-login-trigger" style="background: #0284c7; color: #ffffff; border: none; padding: 8px 16px; font-weight: 600;">Войти</button>
         </nav>
     </header>
 
-    <!-- ГЛАВНАЯ СТРАНИЦА (СТАТИСТИКА) -->
     <main class="container" id="page-main">
-        <!-- Блок ЛИДЕРБОРД / ТОП -->
-        <section class="leaderboard-section">
-            <h2>🏆 ТОП ПО ВРЕМЕНИ ПРОТИВ ТАК НАЗЫВАЕМЫХ ДБД КИЛЛЕРС</h2>
-            <div class="leaderboard-table" id="leaderboard"></div>
+        <section class="team-profiles-section" id="section-home">
+            <h2 class="section-title"> ДБД РАНКЕД 30 ПОРАЖЕНИЙ 9 ПОБЕД</h2>
+            
+            <div class="team-grid">
+                <div class="profile-card">
+                    <div class="avatar-wrapper">
+                        <img src="images/avatars/kifx.jpg" alt="kifx" class="profile-avatar">
+                        <div class="profile-quote">"в пизду"</div>
+                    </div>
+                    <h3 class="profile-name">KIFX</h3>
+                </div>
+
+                <div class="profile-card">
+                    <div class="avatar-wrapper">
+                        <img src="images/avatars/zzox.jpg" alt="zzox" class="profile-avatar">
+                        <div class="profile-quote">"сьеби с лачуги"</div>
+                    </div>
+                    <h3 class="profile-name">ZZOX</h3>
+                </div>
+                <div class="profile-card">
+                    <div class="avatar-wrapper">
+                        <img src="images/avatars/snovvy.jpg" alt="snovvy" class="profile-avatar">
+                        <div class="profile-quote">"я тебя ненавижу"</div>
+                    </div>
+                    <h3 class="profile-name">SNOVVY</h3>
+                </div>
+                <div class="profile-card">
+                    <div class="avatar-wrapper">
+                        <img src="images/avatars/yowie.jpg" alt="yowie" class="profile-avatar">
+                        <div class="profile-quote">"200"</div>
+                    </div>
+                    <h3 class="profile-name">YOWIE</h3>
+                </div>
+
+                <div class="profile-card">
+                    <div class="avatar-wrapper">
+                        <img src="images/avatars/zeyld.jpg" alt="zeyld" class="profile-avatar">
+                        <div class="profile-quote">"я божество"</div>
+                    </div>
+                    <h3 class="profile-name">ZEYLD</h3>
+                </div>
+
+                <div class="profile-card ghost-player">
+                    <div class="avatar-wrapper">
+                        <img src="images/avatars/kuroko.jpg" alt="Призрачный игрок" class="profile-avatar">
+                        <div class="profile-quote">"400"</div>
+                    </div>
+                    <h3 class="profile-name">ПРИЗРАЧНЫЙ ИГРОК</h3>
+                </div>
+            </div>
         </section>
 
-        <!-- Блок ПРОФИЛИ ИГРОКОВ -->
-        <section class="profiles-section">
-            <h2>👤 ПРОФИЛИ ИГРОКОВ МАТАДОРА КАП</h2>
-            <div class="profiles-grid" id="profiles-grid"></div>
-        </section>
-    </main>
-
-  <main class="container" id="page-tier">
-        <section class="tierlist-section">
+        <section id="section-tierlist" class="tierlist-section" style="display: none;">
             
             <div class="tier-modes">
-                <button id="btn-mode-30" class="mode-btn active">⚡ 30 ДБДШНИКОВ</button>
-                <button id="btn-mode-all" class="mode-btn">🏆 ВСЕ ДБДШНИКИ</button>
+                <button id="btn-mode-30" class="mode-btn active"> 30 ДБДШНИКОВ</button>
+                <button id="btn-mode-all" class="mode-btn"> ВСЕ ДБДШНИКИ</button>
+                <button id="btn-mode-teams" class="mode-btn"> КОМАНДЫ</button> </div>
             </div>
 
-            <div class="tier-table">
-                <div class="tier-row">
-                    <div class="tier-label god-tier">легенды и очень сильные игроки</div>
-                    <div class="tier-zone" id="tier-god"></div>
+            <div class="tier-layout-wrapper">
+                
+                <div class="tier-table">
+                    <div class="tier-row">
+                        <div class="tier-label god-tier">легенды</div>
+                        <div class="tier-zone" id="tier-god"></div>
+                    </div>
+                    
+                    <div class="tier-row">
+                        <div class="tier-label god2-tier">очень сильные игроки</div>
+                        <div class="tier-zone" id="tier-god2"></div>
+                    </div>
+                    
+                    <div class="tier-row">
+                        <div class="tier-label s-tier">скиловые ребятки</div>
+                        <div class="tier-zone" id="tier-s"></div>
+                    </div>
+                    
+                    <div class="tier-row">
+                        <div class="tier-label a-tier">выше среднего</div>
+                        <div class="tier-zone" id="tier-a"></div>
+                    </div>
+                    
+                    <div class="tier-row">
+                        <div class="tier-label b-tier">середнячки(дефолтики)</div>
+                        <div class="tier-zone" id="tier-b"></div>
+                    </div>
+                    
+                    <div class="tier-row">
+                        <div class="tier-label c-tier">ниже среднего</div>
+                        <div class="tier-zone" id="tier-c"></div>
+                    </div>
+                    
+                    <div class="tier-row">
+                        <div class="tier-label d-tier">плохо</div>
+                        <div class="tier-zone" id="tier-d"></div>
+                    </div>
+                    
+                    <div class="tier-row">
+                        <div class="tier-label f-tier">не знаю их</div>
+                        <div class="tier-zone" id="tier-f"></div>
+                    </div>
                 </div>
-                <div class="tier-row">
-                    <div class="tier-label s-tier">скиловые ребятки</div>
-                    <div class="tier-zone" id="tier-s"></div>
+
+                <div id="secret-timer-container" class="side-timer" style="display: none;">
+                    <div class="timer-title">хахахахахаха:</div>
+                    <div id="timer-display" class="timer-countdown">10:00</div>
                 </div>
-                <div class="tier-row">
-                    <div class="tier-label a-tier">выше среднего</div>
-                    <div class="tier-zone" id="tier-a"></div>
-                </div>
-                <div class="tier-row">
-                    <div class="tier-label b-tier">середнячки(дефолтики)</div>
-                    <div class="tier-zone" id="tier-b"></div>
-                </div>
-                <div class="tier-row">
-                    <div class="tier-label c-tier">ниже среднего</div>
-                    <div class="tier-zone" id="tier-c"></div>
-                </div>
-                <div class="tier-row">
-                    <div class="tier-label c-tier">плохо</div>
-                    <div class="tier-zone" id="tier-d"></div>
-                </div>
-                <div class="tier-row">
-                    <div class="tier-label c-tier">не знаю их</div>
-                    <div class="tier-zone" id="tier-f"></div>
+
             </div>
 
-            <h3>📦 ДБД ПЛЕЕРС АХАХАХАХАХАХАХХАХАХАХАХАХАХАХАХ</h3>
-            <div class="tier-zone pool-zone" id="tier-pool">
-                </div>
-
-            <button id="btn-reset-tier" class="reset-btn">🔄 Заново</button>
+            <div style="margin-top: 30px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                <h3 id="pool-title">ДБД ПЛЕЕРС АХАХАХАХАХАХХАХА</h3>
+                <div class="tier-zone pool-zone" id="tier-pool"></div>
+                <button id="btn-reset-tier" class="reset-btn">🔄 Заново</button>
+            </div>
         </section>
     </main>
 
     <footer style="margin-top: 80px; padding: 25px 0; border-top: 1px solid #1e293b; text-align: center; background-color: #090d16;">
         <p style="margin: 0; color: #64748b; font-size: 14px; letter-spacing: 1px;">
-            🚀 MADE BY <span style="color: #38bdf8; font-weight: 700;">KIFX</span> | 2026
+             СДЕЛАНО КРИВОРУКИМ <span style="color: #38bdf8; font-weight: 700;">KIFX</span> | 2026
         </p>
     </footer>
 
-    <div id="login-modal" class="modal hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 6, 23, 0.85); display: flex; justify-content: center; align-items: center; z-index: 9999;">
-        <div style="background: #0f172a; border: 1px solid #334155; padding: 30px; border-radius: 12px; width: 100%; max-width: 380px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);">
-            <h3 style="margin-top: 0; margin-bottom: 20px; text-align: center; color: #f1f5f9;">🔒 Вход в панель управления</h3>
-            <form id="login-form">
-                <div style="margin-bottom: 15px;">
-                    <label style="display: block; color: #94a3b8; margin-bottom: 5px; font-size: 13px;">Пароль администратора:</label>
-                    <input type="password" id="admin-password" placeholder="Введите пароль..." style="width: 100%; padding: 10px; background: #1e293b; border: 1px solid #475569; border-radius: 6px; color: #f8fafc; box-sizing: border-box;">
-                </div>
-                <div id="login-error" style="color: #ef4444; font-size: 13px; margin-bottom: 15px; text-align: center; display: none;">Неверный пароль!</div>
-                <div style="display: flex; gap: 10px;">
-                    <button type="button" id="btn-close-login" style="flex: 1; padding: 10px; background: #334155; border: none; color: #f1f5f9; border-radius: 6px; cursor: pointer;">Отмена</button>
-                    <button type="submit" style="flex: 1; padding: 10px; background: #0284c7; border: none; color: #f1f5f9; border-radius: 6px; cursor: pointer; font-weight: 600;">Войти</button>
-                </div>
-            </form>
+    <div id="command-modal-overlay" class="modal-overlay">
+        <div class="modal-card">
+            <h2 class="modal-title">ало</h2>
+            <p class="modal-text">Все команды взяты в разных составах и с разных турниров.Состав может быть не до конца правильным.Чтоб увидеть состав команды, наведись на нее и все вылезет. Респект</p>
+            <button id="modal-close-btn" class="modal-btn">go</button>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
+</html>
