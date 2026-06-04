@@ -92,7 +92,6 @@ const teamsList = [
     { name: "aogiri", players: "lemag1c nep rese1ve mommy detishka predator" },
     { name: "raymond", players: "fors9tina sheldon hypocrite nicotine v popo4ky пельмешка" },
     { name: "black crows", players: "rogog lader hekary ramirez" },
-    { name: "remind", players: "" },
     { name: "Twisted Fate", players: "abadead ishida hollymolly killerax neter435" },
     { name: "Faceless", players: "tohaD rainfall rumka dogerox exa" },
     { name: "Ray of Death", players: "saint krayleft dolo567 hellreyz и арсэн" },
