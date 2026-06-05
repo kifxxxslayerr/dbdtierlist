@@ -333,14 +333,14 @@ function spawnNextPlayer() {
         const endMemes = [
             { src: "images/memes/mem1.jpg", text: "еще разочек братан" },
             { src: "images/memes/mem2.jpg", text: "еще разочек братан" },
-            { src: "images/memes/mem3.png", text: "еще разочек братан" },
-            { src: "images/memes/mem4.png", text: "еще разочек братан" },
-            { src: "images/memes/mem5.png", text: "еще разочек братан" },
-            { src: "images/memes/mem6.png", text: "еще разочек братан" },
-            { src: "images/memes/mem7.png", text: "еще разочек братан" },
-            { src: "images/memes/mem8.png", text: "еще разочек братан" },
-            { src: "images/memes/mem9.png", text: "еще разочек братан" },
-            { src: "images/memes/mem10.png", text: "еще разочек братан" }
+            { src: "images/memes/mem3.jpg", text: "еще разочек братан" },
+            { src: "images/memes/mem4.jpg", text: "еще разочек братан" },
+            { src: "images/memes/mem5.jpg", text: "еще разочек братан" },
+            { src: "images/memes/mem6.jpg", text: "еще разочек братан" },
+            { src: "images/memes/mem7.jpg", text: "еще разочек братан" },
+            { src: "images/memes/mem8.jpg", text: "еще разочек братан" },
+            { src: "images/memes/mem9.jpg", text: "еще разочек братан" },
+            { src: "images/memes/mem10.jpg", text: "еще разочек братан" }
         ];
         
         const randomMeme = endMemes[Math.floor(Math.random() * endMemes.length)];
