@@ -63,7 +63,7 @@ const teamsList = [
     { name: "ASTRALIS", players: "nepsosqua mrazya syeshpelmesh improooove sasuha" },
     { name: "Team BIG RUSYA", players: "большой руся thefallenart xejlife леха " },
     { name: "S.H.O.C.K", players: "temy4es logs bubbozavr smoker meydix fanat" },
-    { name: "BLUEBERRY", players: "geforsik st1mmis fox [крутой мэг] разъебать" },
+    { name: "BLUEBERRY", players: "geforsik st1mmis fox 4svdragon разъебать" },
     { name: "LOYAL PLAYERS", players: "feromon windrose legioner fireinside" },
     { name: "SEA DEVIL'S", players: "wizzle 4mailik non4me artem_dwight" },
     { name: "LUCKERS", players: "neter435 molly fluffy rxw abadead" },
