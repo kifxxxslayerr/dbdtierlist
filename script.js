@@ -232,12 +232,12 @@ function updateRowLabels() {
     if (labelElements.length >= 8) {
         if (currentMode === 'teams') {
             labelElements[0].textContent = "ТИР-1 КОМАНДЫ";
-            labelElements[1].textContent = "СИЛЬНЫЕ КОМАНДЫ";
+            labelElements[1].textContent = "ХАЙСКИЛЛЫ";
             labelElements[2].textContent = "СЫГРАННЫЕ ПАРНИ";
             labelElements[3].textContent = "СРЕДНЯЧОК";
-            labelElements[4].textContent = "ПИВО";
+            labelElements[4].textContent = "РАБОТЯГИ";
             labelElements[5].textContent = "ПЛОХО";
-            labelElements[6].textContent = "ХАХАХАХАХАХА";
+            labelElements[6].textContent = "ЛОУСКИЛЛЫ";
             labelElements[7].textContent = "НН";
         } else {
             labelElements[0].textContent = "ЛЕГЕНДЫ";
