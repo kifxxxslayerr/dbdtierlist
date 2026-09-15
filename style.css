@@ -2,257 +2,201 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0b0d12;
+    background-image: 
+        radial-gradient(circle at 50% 0%, #151b26 0%, transparent 75%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 32px 32px, 32px 32px;
     color: #e2e8f0;
     min-height: 100vh;
-    overflow-x: hidden;
-    background-color: #0b0f19; 
-    background-image: 
-        radial-gradient(circle at 50% 15%, #1e293b 0%, transparent 65%),
-        radial-gradient(circle at 10% 80%, #0f172a 0%, transparent 50%),
-        radial-gradient(circle at 90% 80%, #111827 0%, transparent 50%);
-    background-size: 200% 200%;
-    animation: smoothGlow 20s ease-in-out infinite alternate;
+    display: flex;
+    flex-direction: column;
 }
 
-@keyframes smoothGlow {
-    0% { background-position: 0% 0%; }
-    50% { background-position: 50% 100%; }
-    100% { background-position: 100% 0%; }
-}
-
-.hidden {
-    display: none !important;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    filter: drop-shadow(0 20px 50px rgba(14, 165, 233, 0.05));
-}
-
-.tierlist-section, .tier-table, .profile-card {
-    background-color: #0f172a !important;
-    border: 1px solid #1e293b !important;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 20px 0 rgba(14, 165, 233, 0.03);
-}
-
+/* Шапка сайта */
 header {
-    background-color: #14171c;
-    border-bottom: 2px solid #1f2633;
+    background-color: #0f131a;
+    border-bottom: 1px solid #1e2633;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px;
+    padding: 16px 40px;
+    position: relative;
+    z-index: 100;
 }
 
 .logo {
     font-weight: 800;
-    font-size: 24px;
-    letter-spacing: 2px;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    color: #f1f5f9;
 }
 
 .logo span {
-    color: #0088ff;
-    text-shadow: 0 0 10px rgba(0, 136, 255, 0.6);
+    color: #38bdf8;
 }
 
-nav {
+.logo-link {
+    text-decoration: none;
+}
+
+.center-nav {
     display: flex;
+    gap: 12px;
     align-items: center;
 }
 
-nav a.nav-link {
-    color: #94a3b8;
-    text-decoration: none;
-    margin-right: 25px;
-    font-weight: 600;
-    transition: color 0.3s;
-}
-
-nav a.nav-link:hover, nav a.nav-link.active {
-    color: #fff;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-}
-
-.music-bait-btn {
-    background: #101725;
-    border: 1px solid #334155;
+/* Кнопки Зокса и Дейва */
+.zox-header-bait, .music-bait-btn {
+    background: #161c26;
+    border: 1px solid #2a3447;
     color: #94a3b8;
     padding: 8px 16px;
     border-radius: 6px;
     text-decoration: none;
-    font-weight: 600;
-    margin-right: 15px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+.zox-header-bait:hover, .music-bait-btn:hover {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #3b82f6;
+    box-shadow: 0 0 12px rgba(37, 99, 235, 0.3);
+}
+
+main.container {
+    flex: 1;
+    width: 100%;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Переключатели режимов */
+.tier-modes {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.mode-btn {
+    background-color: #121721;
+    color: #94a3b8;
+    border: 1px solid #222c3d;
+    padding: 10px 20px;
+    font-weight: 700;
+    font-size: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     transition: all 0.2s;
 }
-.music-bait-btn:hover {
-    background: #1e293b;
+
+.mode-btn:hover {
+    border-color: #475569;
     color: #f1f5f9;
 }
 
-.zox-header-bait {
-    background: linear-gradient(270deg, #513085, #6441a5, #772ce8) !important;
-    background-size: 600% 600% !important;
-    animation: twitchGlow 6s ease infinite !important;
+.mode-btn.active {
+    background-color: #2563eb !important;
     color: #ffffff !important;
-    text-decoration: none !important;
-    padding: 8px 16px !important;
-    border-radius: 6px !important;
-    font-weight: 600 !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    margin-right: 15px;
-    box-shadow: 0 2px 8px rgba(100, 65, 165, 0.2) !important;
-    transition: box-shadow 0.3s ease-in-out !important;
+    border-color: #3b82f6 !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
 }
 
-.zox-header-bait:hover {
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.6) !important;
-}
-
-@keyframes twitchGlow {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 20px;
-}
-
-.profile-card {
-    padding: 25px;
-    border-radius: 12px;
-    text-align: center;
-    position: relative;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.profile-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.5);
-}
-
-.avatar-wrapper {
-    position: relative;
-    width: 160px;
-    height: 160px;
-    margin: 0 auto 15px auto;
-}
-
-.profile-avatar {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #334155;
-}
-
-.profile-quote {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(15, 23, 42, 0.95);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    font-size: 13px;
-    font-weight: 600;
-    color: #38bdf8;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    box-sizing: border-box;
-}
-
-.avatar-wrapper:hover .profile-quote {
-    opacity: 1;
-}
-
-.profile-name {
-    font-size: 20px;
-    letter-spacing: 0.5px;
-    font-weight: 700;
-    margin-top: 10px;
-}
-
+/* Таблица Тир-листа */
 .tier-table {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    margin-top: 20px;
+    background: #0f131a;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid #1e2633;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
+/* ИСПРАВЛЕНИЕ 1: Убрали overflow: hidden чтобы тултипы вылезали за пределы ряда */
 .tier-row {
     display: flex;
-    min-height: 80px;
+    min-height: 75px;
     border-radius: 6px;
-    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+/* ИСПРАВЛЕНИЕ 2: Ряд при наведении поднимается выше верхних рядов */
+.tier-row:hover {
+    z-index: 100;
 }
 
 .tier-label {
-    width: 160px;
-    min-width: 160px;
+    width: 150px;
+    min-width: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    font-size: 13px;
+    font-size: 12px;
     text-transform: uppercase;
-    color: #000;
-    padding: 10px;
+    padding: 8px;
     text-align: center;
+    letter-spacing: 0.5px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
 }
 
-.god-tier { background: #f43f5e; }
-.god2-tier { 
-    background: #ff2a6d !important; 
-    color: #000000 !important;      
-}
-.s-tier { background: #ef4444; }
-.a-tier { background: #f97316; }
-.b-tier { background: #eab308; }
-.c-tier { background: #22c55e; }
-.d-tier { background: #2a2a2a; color: #aaaaaa !important; }
-.f-tier { background: #1a1a1a; color: #777777 !important; }
+.god-tier  { background: #9f1239; color: #fecdd3; } 
+.god2-tier { background: #881337; color: #ffe4e6; } 
+.s-tier    { background: #c2410c; color: #ffedd5; } 
+.a-tier    { background: #b45309; color: #fef3c7; } 
+.b-tier    { background: #854d0e; color: #fef9c3; } 
+.c-tier    { background: #15803d; color: #dcfce7; } 
+.d-tier    { background: #3f6212; color: #ecfccb; } 
+.f-tier    { background: #27272a; color: #a1a1aa; } 
 
 .tier-zone {
     flex-grow: 1;
-    background: #090d16;
+    background: #141a24;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
     padding: 10px;
     align-items: center;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
+/* Карточки игроков и команд */
 .tier-item {
-    background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%) !important;
+    background: #1e2636 !important;
     color: #f1f5f9 !important;
-    padding: 10px 20px !important;
+    padding: 8px 16px !important;
     font-weight: 700 !important;
-    font-size: 14px !important;
-    border-radius: 6px !important;
+    font-size: 13px !important;
+    border-radius: 5px !important;
     cursor: grab !important;
-    border: 1px solid #a855f7 !important;
-    box-shadow: 0 4px 10px rgba(168, 85, 247, 0.2) !important;
+    border: 1px solid #334155 !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3) !important;
     text-transform: uppercase;
     user-select: none;
+    transition: border-color 0.2s, transform 0.1s;
+}
+
+.tier-item:hover {
+    border-color: #38bdf8 !important;
+    transform: translateY(-1px);
 }
 
 .tier-item:active {
@@ -260,703 +204,219 @@ nav a.nav-link:hover, nav a.nav-link.active {
 }
 
 .sortable-ghost {
-    opacity: 0.4;
+    opacity: 0.3;
 }
 
-#tier-pool {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    min-height: 90px !important;
-    background-color: #0f172a;
-    border: 2px dashed #334155;
-    border-radius: 8px;
-    padding: 15px;
-    margin-top: 10px;
-    width: 100%;
-}
-
-.tier-modes {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 25px;
-}
-
-.mode-btn, .reset-btn {
-    background-color: #101724;
-    color: #94a3b8;
-    border: 1px solid #1e293b;
-    padding: 10px 20px;
-    font-weight: 700;
-    font-size: 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: all 0.2s;
-}
-
-.mode-btn:hover, .reset-btn:hover {
-    border-color: #a855f7;
-    color: #f1f5f9;
-}
-
-.mode-btn.active {
-    background-color: #a855f7 !important;
-    color: #000 !important;
-    border-color: #a855f7 !important;
-}
-
-.tier-layout-wrapper {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    margin-top: 20px;
-}
-
-.tier-table {
-    flex-grow: 1;
-    margin-top: 0 !important; 
-}
-
-
-#secret-timer-container {
-    position: fixed !important;  
-    top: 50px !important;        
-    right: 50px !important;      
-    
-    background: transparent !important; 
-    backdrop-filter: none !important;    
-    border: none !important;
-    box-shadow: none !important;         
-    padding: 0 !important;               
-    z-index: 99999 !important; 
-    
-
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-.timer-title {
-    color: #ef4444;
-    font-weight: 800;
-    font-size: 11px;     
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-    text-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
-}
-
-.timer-countdown {
-    color: #ffffff;
-    font-size: 26px;     
-    font-weight: 900;
-    font-family: monospace;
-    letter-spacing: 1px;
-}
-.logo-link {
-    text-decoration: none;
-    color: inherit;
-}
-
-
-header {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    padding: 20px 40px;
-    position: relative;
-}
-
-.center-nav {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .center-nav {
-        position: static;
-        transform: none;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-}
-
-
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; 
-    margin: 0;
-}
-
-main.container {
-    flex: 1; 
-}
-
-footer {
-    margin-top: auto !important; 
-}
-
-
-#nav-tierlist {
-    background: transparent;
-    border: 2px solid #a855f7 !important; 
-    border-radius: 6px;
-    padding: 8px 16px !important;
-    color: #ffffff !important;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
-}
-
-
-#nav-tierlist:hover {
-    background: #a855f7 !important;
-    color: #000000 !important; 
-    box-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
-    transform: translateY(-1px);
-}
-
-
-#nav-tierlist.active {
-    background: #a855f7 !important;
-    color: #000000 !important;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
-}
-
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-}
-
-/* Фиксируем главный контейнер, чтобы он не ломал внутренние сетки */
-main.container {
-    flex: 1 0 auto; /* Даем контенту расти вниз, но не сжимать внутренности */
-    width: 100%;
-    max-width: 1200px; /* Поставь тут максимальную ширину твоего сайта, если она была */
-    margin: 0 auto;    /* Центрируем сам контейнер на экране */
-    box-sizing: border-box;
-}
-
-footer {
-    margin-top: auto !important; /* Подвал теперь гарантированно внизу */
-    flex-shrink: 0;
-}
-
-/* На всякий случай возвращаем карточкам их родную сетку 3 в ряд */
-.team-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important; /* Ровные 3 колонки */
-    gap: 30px !important; /* Расстояние между карточками */
-    justify-content: center;
-    align-content: center;
-    margin-top: 40px;
-}
-
-/* Адаптив для карточек на мобилках (чтобы не ломались) */
-@media (max-width: 900px) {
-    .team-grid {
-        grid-template-columns: repeat(2, 1fr) !important; /* 2 в ряд на планшетах */
-    }
-}
-@media (max-width: 600px) {
-    .team-grid {
-        grid-template-columns: 1fr !important; /* 1 в ряд на телефонах */
-    }
-}
-/* ==========================================================================
-   ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ СЕТКИ И КАРТОЧЕК
-   ========================================================================== */
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-}
-
-/* Настраиваем главный контейнер, чтобы он занимал всю ширину и центрировал внутренности */
-main.container {
-    flex: 1 0 auto;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto !important; /* Жестко центрируем сам контейнер */
-    padding: 0 40px;           /* Добавляем боковые отступы, чтобы карточки не липли к краям */
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-}
-
-footer {
-    margin-top: auto !important;
-    flex-shrink: 0;
-}
-
-/* Сетка карточек: теперь она гарантированно встанет по центру экрана и сдвинется правее */
-.team-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 30px !important;
-    width: 100%;
-    margin: 40px auto 0 auto !important; /* Центрируем саму сетку внутри контейнера */
-}
-
-/* Адаптив для планшетов и мобилок */
-@media (max-width: 900px) {
-    .team-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
-}
-@media (max-width: 600px) {
-    .team-grid {
-        grid-template-columns: 1fr !important;
-    }
-}
-/* Магия выравнивания: фиксируем блок с кнопками ровно по центру контента */
-.center-nav {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    
-    position: absolute;
-    left: 50%;
-    /* Сдвигаем на 50% влево, но добавляем ручной отступ вправо (например, 40px), чтобы компенсировать логотип */
-    transform: translateX(-50%);
-    margin-left: 40px; /* Если покажется мало или много — можешь поменять это число (например, 50px или 30px) */
-}
-/* ==========================================================================
-   ФИКС ВЫРВИГЛАЗНЫХ КНОПОК ПРИ НАЖАТИИ (:ACTIVE)
-   ========================================================================== */
-
-/* Фикс для кнопки Твич Зокса */
-.zox-header-bait:active {
-    background: #6441a5 !important; /* Приглушенный твич-фиолетовый вместо белой вспышки */
-    color: #ffffff !important;
-    transform: translateY(1px);
-    box-shadow: 0 0 10px rgba(100, 65, 165, 0.4) !important;
-}
-
-/* Фикс для музыкальной кнопки */
-.music-bait-btn:active {
-    background: #ff0055 !important; /* Мягкий малиновый вместо синего */
-    color: #ffffff !important;
-    transform: translateY(1px);
-    box-shadow: 0 0 10px rgba(255, 0, 85, 0.4) !important;
-}
-
-/* Фикс для кнопки Тир-лист */
-#nav-tierlist:active {
-    background: #7c3aed !important; /* Темно-фиолетовый */
-    color: #ffffff !important;
-    transform: translateY(1px);
-}
-
-/* Фикс для кнопки ЗАНОВО */
-.reset-btn:active {
-    background: #1e293b !important; /* Темный спокойный цвет */
-    color: #94a3b8 !important;
-    transform: scale(0.98); /* Мягкое уменьшение при клике вместо вспышки */
-}
-/* ==========================================================================
-   ТОТАЛЬНАЯ ЗАЧИСТКА НЕОНА: СТАЛЬНОЙ СТИЛЬ ДЛЯ ВСЕХ ЭЛЕМЕНТОВ
-   ========================================================================== */
-
-/* 1. Навигация в шапке (Мягкий матовый стиль) */
-#nav-tierlist {
-    background: transparent !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    box-shadow: none !important;
-    color: rgba(255, 255, 255, 0.8) !important;
-    font-weight: 600;
-}
-#nav-tierlist:hover, #nav-tierlist.active {
-    background: #ffffff !important;
-    color: #000000 !important;
-    border-color: #ffffff !important;
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1) !important;
-}
-
-/* 2. Кнопки переключения фильтров ("30 ДБДШНИКОВ" и "ВСЕ ДБДШНИКОВ") */
-/* Убираем у них фиолетовое свечение и делаем аккуратными */
-.filter-btn, 
-[id*="filter"], 
-header + div button { 
-    box-shadow: none !important;
-    text-shadow: none !important;
-}
-
-/* 3. ЖЕЛЕЗНЫЙ СТИЛЬ ДЛЯ ВСЕХ ПЛАШЕК ИГРОКОВ (и в пуле, и внутри таблицы!) */
-/* Перечисляем все возможные классы плашек, чтобы фиолетовый не пролез никуда */
-.tier-item, 
-.player-tag, 
-.item-html,
-#tier-pool div,
-.tier-cell div {
-    border: 1.5px solid #475569 !important; /* Стальной бортик */
-    background: #1e293b !important;        /* Глубокий темный фон */
-    color: #f8fafc !important;              /* Светлый читаемый текст */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15) !important; /* Мягкая тень */
-    text-shadow: none !important;
-}
-
-/* Фикс для кнопки ТЫКЕРА / КНОПКИ СПАВНА внизу */
-#spawn-button,
-.tyker-btn,
-#tier-pool + div button,
-.tier-item.button-style,
-#section-tierlist button {
-    border: 2px solid #64748b !important; /* Чуть более выраженный стальной бортик */
-    background: #0f172a !important;        /* Чуть темнее фон */
-    color: #ffffff !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
-    text-shadow: none !important;
-}
-
-/* Мягкая подсветка серебром при наведении на любого игрока или кнопку */
-.tier-item:hover, .player-tag:hover, #spawn-button:hover {
-    border-color: #94a3b8 !important; 
-    box-sizing: border-box;
-}
-/* ==========================================================================
-   ПОДСВЕТКА АКТИВНЫХ ФИЛЬТРОВ ИГРОКОВ
-   ========================================================================== */
-
-/* Базовый вид для обеих кнопок фильтров */
-.filter-btn, 
-[id*="filter"],
-header + div button {
-    background: transparent !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    color: rgba(255, 255, 255, 0.8) !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-    transition: all 0.2s ease !important;
-    cursor: pointer;
-}
-
-/* Эффект при наведении курсора */
-.filter-btn:hover, 
-[id*="filter"]:hover {
-    border-color: rgba(255, 255, 255, 0.6) !important;
-    color: #ffffff !important;
-}
-
-/* КРАСИВАЯ ПОДСВЕТКА ДЛЯ ВЫБРАННОЙ КНОПКИ */
-.filter-btn.active, 
-[id*="filter"].active {
-    background: #ffffff !important;         /* Белая заливка */
-    color: #000000 !important;              /* Чёрный текст */
-    border-color: #ffffff !important;
-    font-weight: bold !important;
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15) !important; /* Мягкое белое свечение */
-}
-/* ==========================================================================
-   ЖЕЛЕЗОБЕТОННАЯ ПОДСВЕТКА КНОПОК ФИЛЬТРОВ
-   ========================================================================== */
-
-/* Находим кнопку, когда на ней физически включается фиолетовый фон, 
-   и ПРИНУДИТЕЛЬНО перекрашиваем её в наш новый стильный белый вариант */
-[style*="background-color: rgb(168, 85, 247)"], 
-[style*="background: rgb(168, 85, 247)"],
-[style*="background: #a855f7"],
-[style*="background-color: #a855f7"],
-.filter-btn.active,
-#btn-mode-30.active,
-#btn-mode-all.active {
-    background: #ffffff !important;         /* Белая заливка */
-    color: #000000 !important;              /* Чёрный текст */
-    border-color: #ffffff !important;
-    font-weight: bold !important;
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25) !important; /* Красивое мягкое свечение */
-}
-
-/* Фикс для иконок (молнии и кубка) внутри активной кнопки, чтобы они тоже были видны */
-[style*="background-color: rgb(168, 85, 247)"] *, 
-.filter-btn.active * {
-    color: #000000 !important;
-}
-/* Принудительная белая подсветка для кнопки команд, если она активна */
-#btn-mode-teams.active, 
-.filter-btn#btn-mode-teams.active,
-.mode-btn#btn-mode-teams.active {
-    background: #ffffff !important;
-    color: #000000 !important;
-    border-color: #ffffff !important;
-    font-weight: bold !important;
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25) !important;
-}
-
-/* Фикс для левых цветных плашек тир-листа */
-.tier-row > div:first-child,
-.tier-label,
-[class*="label"] {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    font-size: 13px !important;       /* Немного уменьшаем базовый шрифт */
-    font-weight: bold !important;
-    padding: 4px !important;          /* Минимальные отступы внутри, чтобы освободить место */
-    word-break: break-word !important; /* Разрешаем перенос слов в любом месте */
-    overflow-wrap: anywhere !important;
-    line-height: 1.2 !important;      /* Чтобы перенесённый текст не слипался */
-}
-/* Контейнер для тултипа команды */
-.team-tooltip-container {
-    position: relative;
-    cursor: pointer;
-}
-
-/* Стили самого всплывающего окошка */
-.team-tooltip {
-    visibility: hidden;
-    opacity: 0;
-    position: absolute;
-    bottom: 125%; /* Окошко появится ровно над плашкой команды */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #1a1f29; /* Темный фон под цвет сайта */
-    color: #ffffff;
-    text-align: center;
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: 1px solid #38bdf8; /* Неоновая голубая обводка */
-    font-size: 13px;
-    font-weight: normal;
-    text-transform: none; /* Чтобы ники пацанов не превращались принудительно в КАПС */
-    white-space: nowrap; /* Чтобы список не переносился уродливо */
-    z-index: 9999; /* Чтобы всплывало поверх всех таблиц */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
-    transition: opacity 0.15s ease, visibility 0.15s ease; /* Быстрое и плавное появление */
-}
-
-/* Маленькая стрелочка внизу окошка */
-.team-tooltip::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #1a1f29 transparent transparent transparent;
-}
-
-/* Показываем состав при наведении мышки */
-.team-tooltip-container:hover .team-tooltip {
-    visibility: visible;
-    opacity: 1;
-}
-/* Разрешаем строкам тир-листа показывать всплывающие элементы поверх себя */
-.tier-zone, 
-.tier-row, 
-.tier-list,
-#tier-pool {
-    overflow: visible !important; /* Убираем обрезку тултипов */
-    position: relative;
-}
-
-/* Контейнер для тултипа команды */
+/* ИСПРАВЛЕНИЕ 3: Исправленное позиционирование тултипов при наведении */
 .team-tooltip-container {
     position: relative !important;
-    cursor: pointer;
+    display: inline-block;
 }
 
-/* Приподнимаем саму строку при наведении, чтобы она была выше остальных */
-.tier-zone:hover, .tier-row:hover {
-    z-index: 9999 !important;
+.team-tooltip-container:hover {
+    z-index: 9999;
 }
 
-/* Финальное всплывающее окошко с пацанами */
 .team-tooltip {
     visibility: hidden;
     opacity: 0;
     position: absolute;
-    bottom: 140%; /* Чуть выше приподняли над плашкой команды */
+    bottom: calc(100% + 8px);
     left: 50%;
     transform: translateX(-50%);
-    background-color: #0b0e14; /* Ещё чуть темнее для максимального контраста */
-    color: #ffffff;
+    background-color: #0b0d12;
+    color: #f8fafc;
     text-align: center;
-    padding: 10px 18px; /* Добавили простора внутри */
-    border-radius: 8px;
-    border: 2px solid #38bdf8; /* Сочный неоновый ободок */
-    
-    /* КРУПНЫЙ И ЧИТАЕМЫЙ ШРИФТ */
-    font-size: 16px; /* Сделали ещё чуть крупнее */
-    font-weight: 700; /* Максимальная жирность */
-    letter-spacing: 0.5px;
-    
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1px solid #3b82f6;
+    font-size: 12px;
+    font-weight: 600;
     text-transform: none;
-    white-space: nowrap; /* Не даёт строке уродливо переноситься */
-    
-    /* ПРОБИВАЕМ ЛЮБЫЕ СЛОИ */
-    z-index: 100000 !important; 
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.9);
-    
-    /* Задержка появления (0.1s), чтобы при перетаскивании плашки окошко не спамило на весь экран */
-    transition: opacity 0.2s ease, visibility 0.2s ease;
-    transition-delay: 0.1s; 
+    white-space: nowrap;
+    z-index: 99999;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
+    transition: opacity 0.15s ease, visibility 0.15s ease;
     pointer-events: none;
 }
 
-/* Маленькая стрелочка под окошком */
+/* Стрелочка снизу тултипа */
 .team-tooltip::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 100%;
     left: 50%;
-    margin-left: -6px;
-    border-width: 6px;
+    transform: translateX(-50%);
+    border-width: 5px;
     border-style: solid;
-    border-color: #38bdf8 transparent transparent transparent;
+    border-color: #3b82f6 transparent transparent transparent;
 }
 
-/* Показываем состав пацанов при наведении мышки */
 .team-tooltip-container:hover .team-tooltip {
     visibility: visible;
     opacity: 1;
 }
-/* Прокачанный контейнер таймера */
-/* Прокачанный контейнер таймера без обводки */
-/* Полностью прозрачный таймер без фоновой коробки */
+
+/* Пул элементов внизу */
+.pool-container-wrapper {
+    margin-top: 35px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#pool-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 1px;
+}
+
+#tier-pool {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 85px !important;
+    background-color: #0f131a;
+    border: 2px dashed #222c3d;
+    border-radius: 8px;
+    padding: 15px;
+    width: 100%;
+}
+
+.reset-btn {
+    background-color: #161c26;
+    color: #94a3b8;
+    border: 1px solid #2a3447;
+    padding: 10px 24px;
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.reset-btn:hover {
+    background: #222b3b;
+    color: #f8fafc;
+    border-color: #475569;
+}
+
+/* Аккуратный фиксированный таймер под хедером справа */
 .side-timer {
-    background: transparent !important; /* УБРАЛИ ЧЕРНЫЙ ФОН */
-    backdrop-filter: none !important;    /* УБРАЛИ РАЗМЫТИЕ */
-    border: none !important;
-    box-shadow: none !important;         /* УБРАЛИ ТЕНЬ НАД КОРОБКОЙ */
-    padding: 10px 0 !important;          /* Сжали боковые отступы, раз фона всё равно нет */
-    
-    /* Эффекты плавного исчезновения при 00:00 оставляем */
-    transition: opacity 0.5s ease, transform 0.5s ease, display 0.5s;
-    opacity: 1;
-    transform: translateY(0);
+    position: fixed !important;
+    top: 80px !important;
+    right: 20px !important;
+    background: rgba(15, 19, 26, 0.95);
+    border: 1px solid #222c3d;
+    padding: 10px 16px;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    text-align: center;
+    backdrop-filter: blur(8px);
 }
 
-/* Чуть-чуть подсветим сами циферки, раз у них больше нет темной подложки */
-.side-timer .timer-countdown {
-    color: #ffffff !important;
-    font-size: 28px !important;
-    font-weight: 800 !important;
-    font-family: 'Courier New', Courier, monospace;
-    letter-spacing: 1px !important;
-    
-    /* Мягкое неоновое свечение вокруг самих цифр, чтобы они круто читались на фоне сайта */
-    text-shadow: 0 0 10px rgba(56, 189, 248, 0.6), 0 0 20px rgba(56, 189, 248, 0.2) !important;
+.timer-title {
+    color: #64748b;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
 }
 
-/* Сделаем заголовок тоже слегка светящимся в тон */
-.side-timer .timer-title {
-    color: #38bdf8 !important; /* Поменяли на фирменный голубой, без фона серый потеряется */
-    font-size: 11px !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 2px !important;
-    margin-bottom: 4px !important;
-    text-shadow: 0 0 8px rgba(56, 189, 248, 0.4) !important;
+.timer-countdown {
+    color: #38bdf8;
+    font-size: 20px;
+    font-weight: 800;
+    font-family: monospace;
 }
-/* Затемнение и размытие всего экрана */
-/* Затемнение экрана — делаем его глубже и благороднее */
+
+/* Модалка */
 .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(8, 10, 15, 0.85); /* Глубокий темный фон */
-    backdrop-filter: blur(8px);        /* Приятное размытие заднего плана */
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(5, 7, 10, 0.85);
+    backdrop-filter: blur(6px);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 999999;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: all 0.25s ease;
 }
 
-/* Окно стало активным */
 .modal-overlay.active {
     opacity: 1;
     visibility: visible;
 }
 
-/* Карточка окна — убираем ядовитые рамки, делаем мягкую неоновую линию сверху */
 .modal-card {
-    background: #121620; /* Цвет один-в-один как у подложки тир-листа */
-    border-radius: 14px;
-    padding: 35px 40px;
+    background: #0f131a;
+    border: 1px solid #222c3d;
+    border-radius: 10px;
+    padding: 30px;
     text-align: center;
-    max-width: 460px;
-    width: 85%;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-    border-top: 3px solid #38bdf8; /* Аккуратная тонкая полоса сверху вместо всей обводки */
-    transform: scale(0.9);
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Плавный красивый отскок при появлении */
-}
-
-.modal-overlay.active .modal-card {
-    transform: scale(1);
+    max-width: 440px;
+    width: 90%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
 }
 
 .modal-title {
     color: #38bdf8;
-    font-size: 26px;        /* Было 22px — теперь горит ярко */
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 3px;     /* Чуть больше воздуха между буквами */
-    margin-bottom: 22px;
-    text-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+    font-size: 22px;
+    margin-bottom: 15px;
 }
 
 .modal-text {
-    color: #e2e8f0;         /* Сделали ярче (был тусклый серый), теперь отлично контрастирует */
-    font-size: 17px;        /* Было 14px — теперь читается без напряга */
-    line-height: 1.7;        /* Увеличили межстрочный интервал, чтобы текст не слипался */
-    margin-bottom: 32px;
-    font-weight: 500;
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
 }
 
 .modal-btn {
-    background: rgba(56, 189, 248, 0.06);
-    color: #38bdf8;
-    border: 1px solid rgba(56, 189, 248, 0.4);
-    padding: 12px 55px;     /* Сделали кнопку чуть шире и объемнее */
-    font-size: 15px;        /* Было 13px */
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 10px 40px;
+    font-size: 14px;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
     border-radius: 6px;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: background 0.2s;
 }
 
 .modal-btn:hover {
-    background: #38bdf8;
-    color: #0b0e14;
-    border-color: #38bdf8;
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+    background: #1d4ed8;
 }
-.sortable-chosen .team-tooltip,
-.sortable-ghost .team-tooltip {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
+
+footer {
+    margin-top: auto;
+    padding: 20px 0;
+    border-top: 1px solid #1e2633;
+    text-align: center;
+    background-color: #0f131a;
+    color: #64748b;
+    font-size: 13px;
+}
+
+footer span {
+    color: #38bdf8;
+    font-weight: 700;
+}
+/* Настройки живого видео-фона */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Растягивает видео на весь экран без искажения пропорций */
+    z-index: -1;      /* Уводит видео на самый задний план */
+    opacity: 0.35;     /* Прозрачность: подгоняй от 0.2 до 0.5, чтобы тир-лист хорошо читался */
+    pointer-events: none;
 }

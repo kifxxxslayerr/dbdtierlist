@@ -1,12 +1,3 @@
-const players = [
-    { name: "zeyld", dbdTime: 13, matches: 142, avatar: "images/avatars/zeyld.jpg", bg: "images/backgrounds/dark.jpg" },
-    { name: "kifx", dbdTime: 52, matches: 98, avatar: "images/avatars/kifx.jpg", bg: "images/backgrounds/dark.jpg" },
-    { name: "snovvy", dbdTime: 48, matches: 115, avatar: "images/avatars/snovvy.jpg", bg: "images/backgrounds/dark.jpg" },
-    { name: "yowie", dbdTime: 30, matches: 50, avatar: "images/avatars/yowie.jpg", bg: "images/backgrounds/dark.jpg" },
-    { name: "zzox", dbdTime: 42, matches: 88, avatar: "images/avatars/zzox.jpg", bg: "images/backgrounds/dark.jpg" },
-    { name: "призрачный игрок", dbdTime: 60, matches: 104, avatar: "images/avatars/kuroko.jpg", bg: "images/backgrounds/dark.jpg" }
-];
-
 const randomNicknames = [
     "exize", "VoLGa", "24min", "seva20022", "fuerok", 
     "killjet", "californication", "qullan", "6yaka", "шампунь mysticl",
@@ -47,6 +38,7 @@ const randomNicknames = [
     "ton1uck", "killmexan", "nestor", "neito", "resolution", "leoneed", "юрий rayman show",
     "nessu", "akitetsi", "egorka show"
 ];
+
 const teamsList = [
     { name: "Outer Heaven", players: "zeyld minxrka pestxr lemag1c snovvy z-z-zox"},
     { name: "Death Wish", players: "kifx xejlovaro minxrka undead deikun ishidaharuko objectivily" },
@@ -136,41 +128,15 @@ const teamsList = [
     { name: "oboy", players: "oskar dunder mathis daimao" },
     { name: "akatsuki", players: "nestor neito 4lacrity goodkxt honeymaker vadimus "}
 ];
-document.addEventListener('DOMContentLoaded', () => {
-    const logoHome = document.getElementById('logo-home'); 
-    const navTierlist = document.getElementById('nav-tierlist');
-    
-    const sectionHome = document.getElementById('section-home');
-    const sectionTierlist = document.getElementById('section-tierlist');
-
-    if (logoHome && navTierlist && sectionHome && sectionTierlist) {
-        sectionHome.style.display = "block";
-        sectionTierlist.style.display = "none";
-
-        logoHome.addEventListener('click', (e) => {
-            e.preventDefault();
-            navTierlist.classList.remove('active');
-            sectionHome.style.display = "block";
-            sectionTierlist.style.display = "none";
-            window.scrollTo(0, 0);
-        });
-
-        navTierlist.addEventListener('click', (e) => {
-            e.preventDefault();
-            navTierlist.classList.add('active');
-            sectionHome.style.display = "none";
-            sectionTierlist.style.display = "block";
-            window.scrollTo(0, 0);
-            
-            initTierList();
-        });
-    }
-});
 
 let tierListInitialized = false;
 let remainingNicks = []; 
 let currentMode = '30'; 
 let modeButtonsSetup = false; 
+
+document.addEventListener('DOMContentLoaded', () => {
+    initTierList();
+});
 
 function setupModeButtons() {
     if (modeButtonsSetup) return; 
@@ -227,7 +193,7 @@ function setupModeButtons() {
 }
 
 function updateRowLabels() {
-    const labelElements = document.querySelectorAll('.tier-row > div:first-child, [class*="label"], .tier-label');
+    const labelElements = document.querySelectorAll('.tier-label');
     
     if (labelElements.length >= 8) {
         if (currentMode === 'teams') {
@@ -255,6 +221,7 @@ function updateRowLabels() {
 function initTierList() {
     setupModeButtons();
     updateRowLabels(); 
+
     const poolTitle = document.getElementById('pool-title');
     if (poolTitle) {
         if (currentMode === 'teams') {
@@ -262,23 +229,18 @@ function initTierList() {
             const modalOverlay = document.getElementById('command-modal-overlay');
             const modalCloseBtn = document.getElementById('modal-close-btn');
             
-            if (modalOverlay) {
-                modalOverlay.classList.add('active');
-            }
-            
+            if (modalOverlay) modalOverlay.classList.add('active');
             if (modalCloseBtn && modalOverlay) {
                 modalCloseBtn.onclick = function() {
                     modalOverlay.classList.remove('active');
                 };
             }
-
         } else {
             poolTitle.innerText = "ДБД ПЛЕЕРС АХАХАХАХАХАХХАХА";
         }
     }
 
     if (tierListInitialized) return;
-    
 
     if (currentMode === '30') {
         let tempNicks = [...randomNicknames];
@@ -322,7 +284,6 @@ function initTierList() {
     tierListInitialized = true;
 }
 
-
 function spawnNextPlayer() {
     const poolContainer = document.getElementById('tier-pool');
     if (!poolContainer) return;
@@ -333,24 +294,17 @@ function spawnNextPlayer() {
         const endMemes = [
             { src: "images/memes/mem1.jpg", text: "еще разочек братан" },
             { src: "images/memes/mem2.jpg", text: "еще разочек братан" },
-            { src: "images/memes/mem3.jpg", text: "еще разочек братан" },
-            { src: "images/memes/mem4.jpg", text: "еще разочек братан" },
-            { src: "images/memes/mem5.jpg", text: "еще разочек братан" },
-            { src: "images/memes/mem6.jpg", text: "еще разочек братан" },
-            { src: "images/memes/mem7.jpg", text: "еще разочек братан" },
-            { src: "images/memes/mem8.jpg", text: "еще разочек братан" },
-            { src: "images/memes/mem9.jpg", text: "еще разочек братан" },
-            { src: "images/memes/mem10.jpg", text: "еще разочек братан" }
+            { src: "images/memes/mem3.jpg", text: "еще разочек братан" }
         ];
         
         const randomMeme = endMemes[Math.floor(Math.random() * endMemes.length)];
         
         poolContainer.innerHTML = `
             <div style="width: 100%; text-align: center; padding: 10px;">
-                <p style="color: #ffffff; font-size: 24px; font-weight: bold; margin-bottom: 20px; text-shadow: 2px 2px 4px #000;">
+                <p style="color: #ffffff; font-size: 20px; font-weight: bold; margin-bottom: 15px;">
                     ${randomMeme.text}
                 </p>
-                <img src="${randomMeme.src}" alt="Финал" style="max-width: 100%; max-height: 350px; border-radius: 8px; box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); border: 2px solid #ffffff;">
+                <img src="${randomMeme.src}" alt="Финал" style="max-width: 100%; max-height: 250px; border-radius: 8px;">
             </div>
         `;
         return;
@@ -359,13 +313,11 @@ function spawnNextPlayer() {
     const currentItem = remainingNicks.shift();
     let itemHtml = '';
 
-   if (typeof currentItem === 'object' && currentItem !== null) {
+    if (typeof currentItem === 'object' && currentItem !== null) {
         const teamPlayers = currentItem.players ? currentItem.players : "Состав неизвестен";
-
         itemHtml = `
-            <div class="tier-item team-tooltip-container" style="display: inline-flex; align-items: center; justify-content: center; padding: 6px 12px; position: relative;">
+            <div class="tier-item team-tooltip-container" style="display: inline-flex; align-items: center; justify-content: center;">
                 <span>${currentItem.name.toUpperCase()}</span>
-                
                 <div class="team-tooltip">${teamPlayers}</div>
             </div>
         `;
@@ -385,18 +337,7 @@ function startSecretTimer() {
     const timerDisplay = document.getElementById('timer-display');
 
     if (timerContainer) {
-        document.body.appendChild(timerContainer);
-        timerContainer.style.setProperty('position', 'fixed', 'important');
-        timerContainer.style.setProperty('top', '20px', 'important');
-        timerContainer.style.setProperty('right', '30px', 'important');
-        timerContainer.style.setProperty('z-index', '999999', 'important');
-        timerContainer.style.setProperty('background', 'transparent', 'important');
-        timerContainer.style.setProperty('border', 'none', 'important');
-        timerContainer.style.setProperty('box-shadow', 'none', 'important');
-        timerContainer.style.setProperty('padding', '0', 'important');
-        timerContainer.style.setProperty('margin', '0', 'important');
-        
-        timerContainer.style.setProperty('display', 'block', 'important');
+        timerContainer.style.display = 'block';
     }
 
     const interval = setInterval(() => {
@@ -410,29 +351,15 @@ function startSecretTimer() {
         
         if (timerDisplay) {
             timerDisplay.textContent = `${minutes}:${seconds}`;
-            timerDisplay.style.color = '#ffffff';
-            timerDisplay.style.fontSize = '26px';
-            timerDisplay.style.fontWeight = '800';
-            timerDisplay.style.fontFamily = 'Courier New, Courier, monospace';
-            timerDisplay.style.textShadow = '0 0 10px rgba(56, 189, 248, 0.6)';
         }
         
         if (totalSeconds <= 0) {
             clearInterval(interval);
-            
-            if (timerContainer) {
-                timerContainer.style.opacity = '0';
-                timerContainer.style.transform = 'translateY(-20px)';
-                
-                setTimeout(() => {
-                    timerContainer.style.display = 'none';
-                }, 500);
-            }
-            
             window.open(SECRET_REDIRECT_URL, '_blank');
         }
     }, 1000);
 }
+
 document.addEventListener('dragstart', () => {
     if (!timerStarted) {
         timerStarted = true;
